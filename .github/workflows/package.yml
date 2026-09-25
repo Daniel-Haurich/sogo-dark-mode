@@ -1,0 +1,44 @@
+name: Package extension
+
+# On every tag matching "v*", automatically builds the store ZIP
+# (manifest.json, content/, popup/, icons/) and attaches it to the
+# matching GitHub release.
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read version from manifest.json
+        id: version
+        run: |
+          VERSION=$(node -pe "require('./manifest.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build store ZIP
+        run: |
+          zip -r sogo-dark-mode-${{ steps.version.outputs.version }}.zip \
+            manifest.json content popup icons \
+            -x "*.DS_Store"
+
+      - name: Upload as build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sogo-dark-mode-${{ steps.version.outputs.version }}
+          path: sogo-dark-mode-${{ steps.version.outputs.version }}.zip
+
+      - name: Attach to GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: sogo-dark-mode-${{ steps.version.outputs.version }}.zip

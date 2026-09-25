@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SOGo Dark Mode</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <img src="../icons/icon32.png" alt="" />
+    <h1>SOGo Dark Mode</h1>
+  </header>
+
+  <section class="status" id="status">
+    <span id="statusIcon" class="dot"></span>
+    <span id="statusText">Checking status…</span>
+  </section>
+
+  <section class="row">
+    <label class="switch">
+      <input type="checkbox" id="globalToggle" />
+      <span class="slider"></span>
+    </label>
+    <div class="row-label">
+      <strong>Dark mode enabled</strong>
+      <small>Global switch for all detected SOGo pages</small>
+    </div>
+  </section>
+
+  <section class="row" id="overrideRow">
+    <label class="switch">
+      <input type="checkbox" id="siteOverrideToggle" />
+      <span class="slider"></span>
+    </label>
+    <div class="row-label">
+      <strong id="overrideLabel">Force on this site</strong>
+      <small id="overrideHint">In case SOGo isn't detected automatically here</small>
+    </div>
+  </section>
+
+  <section class="themes">
+    <div class="themes-title">Theme</div>
+    <div class="theme-grid" id="themeGrid">
+      <button type="button" class="theme-swatch" data-theme="standard" title="Standard">
+        <span class="swatch-color swatch-standard"></span>
+        <span>Standard</span>
+      </button>
+      <button type="button" class="theme-swatch" data-theme="amoled" title="AMOLED / True Black">
+        <span class="swatch-color swatch-amoled"></span>
+        <span>AMOLED</span>
+      </button>
+      <button type="button" class="theme-swatch" data-theme="blue" title="Midnight Blue">
+        <span class="swatch-color swatch-blue"></span>
+        <span>Midnight Blue</span>
+      </button>
+      <button type="button" class="theme-swatch" data-theme="warm" title="Warm Amber">
+        <span class="swatch-color swatch-warm"></span>
+        <span>Warm Amber</span>
+      </button>
+      <button type="button" class="theme-swatch" data-theme="green" title="Terminal Green">
+        <span class="swatch-color swatch-green"></span>
+        <span>Terminal Green</span>
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <span id="hostLabel" class="host-label"></span>
+    <div class="credits">
+      <span>© 2026 <strong>Daniel Haurich</strong></span>
+      <div class="credit-links">
+        <a id="githubLink" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span aria-hidden="true">·</span>
+        <a id="donateLink" href="#" target="_blank" rel="noopener noreferrer">☕ Support me</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

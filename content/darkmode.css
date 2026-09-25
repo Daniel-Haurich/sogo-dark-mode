@@ -1,0 +1,110 @@
+/*
+ * SOGo Dark Mode – CSS
+ * © Daniel Haurich – https://github.com/Daniel-Haurich/sogo-dark-mode
+ *
+ * Only takes effect once detect.js has set the "sogo-dark-mode-on" class
+ * plus a "data-sogo-theme" attribute on <html> (SOGo detected + dark
+ * mode enabled).
+ *
+ * Technique: the whole page is inverted and hue-rotated via a CSS filter
+ * (invert(1) + hue-rotate). That turns light surfaces dark without
+ * having to override every single SOGo/AngularJS Material class one by
+ * one. Each theme uses a different hue-rotate angle (plus a bit of extra
+ * contrast for the AMOLED theme), which gives the UI a different color
+ * cast.
+ *
+ * Images, videos, icons, etc. get the mathematically exact counter-
+ * filter (order reversed, angle negated) so photos and attachments show
+ * up in their real colors instead of being inverted themselves.
+ */
+
+html.sogo-dark-mode-on {
+  color-scheme: dark;
+  background: #fff !important;
+}
+
+/* Disable transitions so toggling doesn't feel jarring */
+html.sogo-dark-mode-on,
+html.sogo-dark-mode-on * {
+  transition: none !important;
+}
+
+/* ---------- Theme: Standard (neutral dark gray) ---------- */
+html.sogo-dark-mode-on[data-sogo-theme="standard"] {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+html.sogo-dark-mode-on[data-sogo-theme="standard"] img,
+html.sogo-dark-mode-on[data-sogo-theme="standard"] video,
+html.sogo-dark-mode-on[data-sogo-theme="standard"] canvas,
+html.sogo-dark-mode-on[data-sogo-theme="standard"] embed,
+html.sogo-dark-mode-on[data-sogo-theme="standard"] object,
+html.sogo-dark-mode-on[data-sogo-theme="standard"] iframe,
+html.sogo-dark-mode-on[data-sogo-theme="standard"] svg image,
+html.sogo-dark-mode-on[data-sogo-theme="standard"] picture,
+html.sogo-dark-mode-on[data-sogo-theme="standard"] [style*="background-image"] {
+  filter: hue-rotate(180deg) invert(1) !important;
+}
+
+/* ---------- Theme: AMOLED (true black, more contrast) ---------- */
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] {
+  filter: invert(1) hue-rotate(180deg) contrast(1.2) !important;
+}
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] img,
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] video,
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] canvas,
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] embed,
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] object,
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] iframe,
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] svg image,
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] picture,
+html.sogo-dark-mode-on[data-sogo-theme="amoled"] [style*="background-image"] {
+  filter: contrast(0.8333) hue-rotate(180deg) invert(1) !important;
+}
+
+/* ---------- Theme: Midnight Blue (cool blue cast) ---------- */
+html.sogo-dark-mode-on[data-sogo-theme="blue"] {
+  filter: invert(1) hue-rotate(220deg) !important;
+}
+html.sogo-dark-mode-on[data-sogo-theme="blue"] img,
+html.sogo-dark-mode-on[data-sogo-theme="blue"] video,
+html.sogo-dark-mode-on[data-sogo-theme="blue"] canvas,
+html.sogo-dark-mode-on[data-sogo-theme="blue"] embed,
+html.sogo-dark-mode-on[data-sogo-theme="blue"] object,
+html.sogo-dark-mode-on[data-sogo-theme="blue"] iframe,
+html.sogo-dark-mode-on[data-sogo-theme="blue"] svg image,
+html.sogo-dark-mode-on[data-sogo-theme="blue"] picture,
+html.sogo-dark-mode-on[data-sogo-theme="blue"] [style*="background-image"] {
+  filter: hue-rotate(-220deg) invert(1) !important;
+}
+
+/* ---------- Theme: Warm Amber (warm brown/amber cast) ---------- */
+html.sogo-dark-mode-on[data-sogo-theme="warm"] {
+  filter: invert(1) hue-rotate(150deg) !important;
+}
+html.sogo-dark-mode-on[data-sogo-theme="warm"] img,
+html.sogo-dark-mode-on[data-sogo-theme="warm"] video,
+html.sogo-dark-mode-on[data-sogo-theme="warm"] canvas,
+html.sogo-dark-mode-on[data-sogo-theme="warm"] embed,
+html.sogo-dark-mode-on[data-sogo-theme="warm"] object,
+html.sogo-dark-mode-on[data-sogo-theme="warm"] iframe,
+html.sogo-dark-mode-on[data-sogo-theme="warm"] svg image,
+html.sogo-dark-mode-on[data-sogo-theme="warm"] picture,
+html.sogo-dark-mode-on[data-sogo-theme="warm"] [style*="background-image"] {
+  filter: hue-rotate(-150deg) invert(1) !important;
+}
+
+/* ---------- Theme: Terminal Green ---------- */
+html.sogo-dark-mode-on[data-sogo-theme="green"] {
+  filter: invert(1) hue-rotate(100deg) !important;
+}
+html.sogo-dark-mode-on[data-sogo-theme="green"] img,
+html.sogo-dark-mode-on[data-sogo-theme="green"] video,
+html.sogo-dark-mode-on[data-sogo-theme="green"] canvas,
+html.sogo-dark-mode-on[data-sogo-theme="green"] embed,
+html.sogo-dark-mode-on[data-sogo-theme="green"] object,
+html.sogo-dark-mode-on[data-sogo-theme="green"] iframe,
+html.sogo-dark-mode-on[data-sogo-theme="green"] svg image,
+html.sogo-dark-mode-on[data-sogo-theme="green"] picture,
+html.sogo-dark-mode-on[data-sogo-theme="green"] [style*="background-image"] {
+  filter: hue-rotate(-100deg) invert(1) !important;
+}
