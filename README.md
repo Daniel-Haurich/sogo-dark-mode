@@ -100,42 +100,6 @@ Or do it manually:
 zip -r sogo-dark-mode.zip manifest.json content popup icons
 ```
 
-## Publishing to the Microsoft Edge Add-ons store
-
-1. Register at https://partner.microsoft.com/dashboard/microsoftedge
-   (one-time, free developer registration).
-2. Upload the store ZIP (it already has `manifest.json` at the root, as
-   required by the store).
-3. Fill in the store listing, e.g.:
-   - **Name:** SOGo Dark Mode
-   - **Category:** Productivity
-   - **Copyright:** © 2026 Daniel Haurich
-   - **Privacy:** Collects, sends, or stores no data externally.
-   - **Justification for "Read and change all your data on all
-     websites":** Needed to detect SOGo automatically, since SOGo
-     servers run on arbitrary, self-hosted domains with no fixed URL
-     known in advance.
-4. Include at least 1 screenshot (1280×800 or 640×400 px).
-5. Submit for review.
-
-## Publishing to the Chrome Web Store
-
-1. Register at https://chrome.google.com/webstore/devconsole (one-time
-   $5 developer fee).
-2. Create a new item, upload the store ZIP.
-3. On the **"Privacy practices"** tab:
-   - **Single purpose:** "Switches the SOGo webmail user interface into
-     dark mode."
-   - **Host permission justification (`<all_urls>`):** "SOGo is
-     self-hosted and runs on arbitrary domains the developer can't
-     predict. The extension checks the page content purely locally for
-     SOGo-specific markers and only activates there — no data is
-     collected or transmitted."
-   - **Data usage:** None of the listed data categories are collected.
-4. Screenshots (1280×800 px) and a 128×128 icon are required — already
-   included at `icons/icon128.png`.
-5. Submit for review.
-
 ## Usage
 
 - Clicking the extension icon opens a popup:
